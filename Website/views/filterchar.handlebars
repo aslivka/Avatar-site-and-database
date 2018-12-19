@@ -1,0 +1,87 @@
+<link rel="stylesheet" type="text/css" href="/css/default.css">
+<h2> Filter characters by attributes</h2>
+<form action="/filterchar/nation" method="POST">
+	<table>
+		<tr>
+			<td></td>
+			<td><a href="/" style="margin-left:75px;">Go home</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Select nationality to filter by.</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+		</tr>
+		<tr>
+			<td><label for "nationality" >Nationality: </label>
+			<select name="nationality">
+				<option value="">Blank</option>
+				{{#each nations}}
+			    <option value="{{nation_id}}">{{name}}</option>
+			    {{/each}}
+			</select>
+			</td>
+			<td><br><input type="submit" value="Filter" style="margin-left:50px;"></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><br></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+</form>
+<form action="/filterchar/age" method="post">
+	<table>
+		<tr>
+			<td>Select age to filter by. <br></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>All characters with <span style="font-weight:bold;">AT MOST</span> 
+			this age will be displayed</td>
+		</tr>
+	</table>
+	<table>
+		<tr>
+			<td><label for "age" >Age: </label>
+				<input type="number" id="age" name="age">	
+			</td>
+			<td><br><input type="submit" value="Filter" style="margin-left:75px;"></td>
+		</tr>
+		</tr>
+		<tr>
+		
+		</tr>
+	</table>
+</form>
+<br>
+<h3>List of Characters</h3>
+{{#if filter}}
+<h4> [ Query:   Filtered by {{filter.type}}, value={{filter.value}}  ]</h4>
+{{/if}}
+{{#if characters}}
+<table class="dbResults">
+	<thead>
+		<th>Name</th>
+		<th>Gender</th>
+		<th>Nationality</th>
+		<th>Age</th>
+		<th>Membership</th>
+	</thead>
+	{{#each characters}}
+	<tr>
+		<td>{{name}}</td>
+		<td>{{gender}}</td>
+		<td>{{nation_name}}</td>
+		<td>{{age}}</td>
+		<td>{{membership}}</td>
+	</tr>
+	{{/each}}
+</table>
+{{else}}
+	<p>Empty table</p>
+{{/if}}
+

@@ -1,0 +1,67 @@
+<link rel="stylesheet" type="text/css" href="/css/default.css">
+<h2> Add Nation </h2>
+<form action="/nations" method="POST">
+	<table id="addNation">
+		<tr>
+			<td><label for "name" >Nation name: </label>
+				<input type="text" id="name" name="name" required>
+			</td>
+			<td><a href="/" style="margin-left:75px;">Go home</a></td>
+		</tr>
+		<tr>
+			<td><label for "government" >Government: </label>
+				<input type="text" id="government" name="government" required>
+		</tr>
+		<tr>
+			<td><label for "population" >Population: </label>
+				<input type="number" id="population" name="population" required>
+			</td>
+		</tr>
+		<tr>
+			<td><label for "location">Location: </label>
+			<select name="location">
+				<option value="">Blank</option>
+				<option value="Eastern hemishere">Eastern hemisphere</option>
+				<option value="Western hemishere">Western hemispere</option>
+				<option value="South Pole">South Pole</option>
+				<option value="North Pole">North Pole</option>
+			</select>
+			</td>
+		</tr>
+		<tr>
+			<td><label for "capital" >Capital: </label>
+				<input type="text" id="capital" name="capital">
+			</td>
+		</tr>
+		<tr>
+			<td><br><input type="submit" value="Submit" style="margin-left:75px;"></td>		
+		</tr>
+	</table>
+</form>
+<br>
+<h3>List of Nations</h3>
+{{#if nations}}
+<table class="dbResults">
+	<thead>
+		<th>Name</th>
+		<th>Government</th>
+		<th>Population</th>
+		<th>Location</th>
+		<th>Capital</th>
+		<th></th>
+	</thead>
+	{{#each nations}}
+	<tr>
+		<td>{{name}}</td>
+		<td>{{government}}</td>
+		<td>{{population}}</td>
+		<td>{{location}}</td>
+		<td>{{capital}}</td>
+		<td><button onclick="deleteNation({{nation_id}})">Delete</button></td>
+	</tr>
+	{{/each}}
+</table>
+{{else}}
+	<p>Empty table</p>
+{{/if}}
+

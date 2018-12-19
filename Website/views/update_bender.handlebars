@@ -1,0 +1,32 @@
+<link rel="stylesheet" type="text/css" href="/css/default.css">
+<h2> Update Character's Bending </h2>
+<form id="updateBender">
+	<table id="addBender">
+		<tr>
+			<td>Character: {{character.name}}<input type="hidden" name="char_id" value="{{char_id}}"> </td>
+			<td><a class="goback" href="/benders" style="margin-left:75px;">Go Back</a></td>
+		</tr>
+		<tr>
+			<td><input type="hidden" name="origBending" id="origBending" value="{{bend_id}}">
+			</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><label>Select new bending (original bending selected for reference):</label></td>
+			<td></td>
+		</tr>
+		<tr><td><select name="newBending" id="bend-menu" multiple required>
+				{{#each bending}}
+			    <option value="{{bend_id}}">{{type}}</option>
+			    {{/each}}
+			</select>
+			</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><br></td>		
+		</tr>
+	</table>
+</form>
+<button onclick="updateCharBending()">Update</button>
+<script defer>selectBending({{bend_id}});</script>

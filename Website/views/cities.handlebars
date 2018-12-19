@@ -1,0 +1,52 @@
+<link rel="stylesheet" type="text/css" href="/css/default.css">
+<h2> Add City </h2>
+<form action="/cities" method="POST">
+	<table id="addCity">
+		<tr>
+			<td><label for "name" >City name: </label>
+				<input type="text" id="name" name="name" required>
+			</td>
+			<td><a href="/" style="margin-left:75px;">Go home</a></td>
+		</tr>
+		<tr>
+			<td><label for "population" >Population: </label>
+				<input type="number" id="population" name="population" required>
+		</tr>
+		<tr>
+			<td><label for "nation">Belongs to Nation: </label>
+			<select name="nation">
+				<option value="">Blank</option>
+				{{#each nations}}
+			    <option value="{{nation_id}}">{{name}}</option>
+			    {{/each}}
+			</select>
+			</td>
+		</tr>
+		<tr>
+			<td><br><input type="submit" value="Submit" style="margin-left:75px;"></td>		
+		</tr>
+	</table>
+</form>
+<br>
+<h3>List of Cities</h3>
+{{#if cities}}
+<table class="dbResults">
+	<thead>
+		<th>Name</th>
+		<th>Population</th>
+		<th>Nation</th>
+		<th></th>
+	</thead>
+	{{#each cities}}
+	<tr>
+		<td>{{name}}</td>
+		<td>{{population}}</td>
+		<td>{{nation}}</td>
+		<td><button onclick="deleteCity({{nation_id}})">Delete</button></td>
+	</tr>
+	{{/each}}
+</table>
+{{else}}
+	<p>Empty table</p>
+{{/if}}
+

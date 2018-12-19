@@ -1,0 +1,54 @@
+<link rel="stylesheet" type="text/css" href="/css/default.css">
+<h2> Associate Bending with a Character </h2>
+<form action="/benders" method="POST">
+	<table id="addBender">
+		<tr>
+			<td><label for "character" >Character: </label>
+			<select name="char_id" required>
+				{{#each characters}}
+			    <option value="{{char_id}}">{{name}}</option>
+			    {{/each}}
+			</select>
+			</td>
+			<td><a class="goback" href="/" style="margin-left:75px;">Go Home</a></td>
+		</tr>
+		<tr>
+			<td><label>Select Bending (can select multiple types):</label></td>
+			<td></td>
+		</tr>
+		<tr><td><select name="bend_id" multiple required>
+				{{#each bending}}
+			    <option value="{{bend_id}}">{{type}}</option>
+			    {{/each}}
+			</select>
+			</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><br><input type="submit" value="Submit" style="margin-left:75px;"></td>		
+		</tr>
+	</table>
+</form>
+<br>
+<h3>List of Character Benders</h3>
+{{#if benders}}
+<table class="dbResults">
+	<thead>
+		<th>Character Name</th>
+		<th>Bending Type</th>
+		<th></th>
+		<th></th>
+	</thead>
+	{{#each benders}}
+	<tr>
+		<td>{{name}}</td>
+		<td>{{type}}</td>
+		<td><button onclick="deleteBenderRow({{char_id}}, {{bend_id}})">Delete</button></td>
+		<td><a href="/benders/update/?char_id={{char_id}}&bend_id={{bend_id}}">Update</a></td>
+	</tr>
+	{{/each}}
+</table>
+{{else}}
+	<p>Empty table</p>
+{{/if}}
+

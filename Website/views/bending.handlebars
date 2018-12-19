@@ -1,0 +1,54 @@
+<link rel="stylesheet" type="text/css" href="/css/default.css">
+<h2> Add Bending </h2>
+<form action="/bending" method="POST">
+	<table id="addBending">
+		<tr>
+			<td><label for "type" >Bending type: </label>
+				<input type="text" id="type" name="type" required>
+			</td>
+			<td><a class="goback" href="/" style="margin-left:75px;">Go home</a></td>
+		</tr>
+		<tr>
+			<td><label for "rarity" >Rarity: </label>
+				<input type="text" id="rarity" name="rarity">
+		</tr>
+		<tr>
+			<td><label for "source">Bending source: </label>
+				<input type="text" id="source" name="source" required>
+			</td>
+		</tr>
+		<tr>
+			<td><label for "learned_from">Learned from: </label>
+				<input type="text" id="learned_from" name="learned_from" required>
+			</td>
+		</tr>
+		<tr>
+			<td><br><input type="submit" value="Submit" style="margin-left:75px;"></td>		
+		</tr>
+	</table>
+</form>
+<br>
+<h3>List of Bending Types</h3>
+{{#if bending}}
+<table class="dbResults">
+	<thead>
+		<th>Bending Type</th>
+		<th>Rarity</th>
+		<th>Source</th>
+		<th>Learned From</th>
+		<th></th>
+	</thead>
+	{{#each bending}}
+	<tr>
+		<td>{{type}}</td>
+		<td>{{rarity}}</td>
+		<td>{{source}}</td>
+		<td>{{learned_from}}</td>
+		<td><button onclick="deleteBending({{bend_id}})">Delete</button></td>
+	</tr>
+	{{/each}}
+</table>
+{{else}}
+	<p>Empty table</p>
+{{/if}}
+

@@ -1,0 +1,65 @@
+<link rel="stylesheet" type="text/css" href="/css/default.css">
+<h2> Add Organization </h2>
+<form action="/orgs" method="POST">
+	<table id="addOrg">
+		<tr>
+			<td><label for "title" >Title: </label>
+				<input type="text" id="title" name="title" required>
+			</td>
+			<td><a href="/" style="margin-left:75px;">Go home</a></td>
+		</tr>
+		<tr>
+			<td><label for "purpose" >Purpose: </label>
+				<input type="text" id="purpose" name="purpose" required>
+		</tr>
+		<tr>
+			<td><label for "status">Current status: </label>
+			<select name="status" required>
+				<option value="Unknown">Unknown</option>
+				<option value="Active">Active</option>
+				<option value="Disbanded">Disbanded</option>
+				<option value="Destroyed">Destroyed</option>
+			</select>
+			</td>
+		</tr>
+		<tr>
+			<td><label for "influence">Influence level: </label>
+				<select name="influence">
+				<option value="">Blank</option>
+				<option value="Local">Local</option>
+				<option value="Regional">Regional</option>
+				<option value="Global">Global</option>
+				<option value="Universal">Universal</option>
+			</select>
+			</td>
+		</tr>
+		<tr>
+			<td><br><input type="submit" value="Submit" style="margin-left:75px;"></td>		
+		</tr>
+	</table>
+</form>
+<br>
+<h3>List of Organizations</h3>
+{{#if organizations}}
+<table class="dbResults">
+	<thead>
+		<th>Organization title</th>
+		<th>Purpose</th>
+		<th>Status</th>
+		<th>Influence level</th>
+		<th></th>
+	</thead>
+	{{#each organizations}}
+	<tr>
+		<td>{{title}}</td>
+		<td>{{purpose}}</td>
+		<td>{{status}}</td>
+		<td>{{influence}}</td>
+		<td><button onclick="deleteOrganization({{org_id}})">Delete</button></td>
+	</tr>
+	{{/each}}
+</table>
+{{else}}
+	<p>Empty table</p>
+{{/if}}
+

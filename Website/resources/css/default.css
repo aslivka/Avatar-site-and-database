@@ -1,0 +1,13 @@
+body
+{
+	margin-left: 25px;
+}
+
+.dbResults td,th {
+	border: 1px solid black;
+}
+
+.dbResults {
+	text-align:center;
+	border-collapse: collapse;
+}

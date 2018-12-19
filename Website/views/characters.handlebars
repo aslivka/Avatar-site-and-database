@@ -1,0 +1,76 @@
+<link rel="stylesheet" type="text/css" href="/css/default.css">
+<h2> Add Character </h2>
+<form id="addCharacter" action="/characters" method="post">
+	<table>
+		<tr>
+			<td><label for "name" >Name: </label>
+				<input type="text" id="name" name="name">
+			</td>
+			<td><a href="/" style="margin-left:75px;">Go home</a></td>
+		</tr>
+		<tr>
+			<td><label for "genderM" >Male: </label>
+				<input type="radio" id="genderM" name="gender" value="male" checked>
+				<label for "genderF" >Female: </label>
+				<input type="radio" id="genderF" name="gender" value="female">
+			</td>
+		</tr>
+		<tr>
+			<td><label for "nationality" >Nationality: </label>
+			<select name="nationality">
+				<option value="">Blank</option>
+				{{#each nations}}
+			    <option value="{{nation_id}}">{{name}}</option>
+			    {{/each}}
+			</select>
+			</td>
+		</tr>
+		<tr>
+			<td><label for "age" >Age: </label>
+				<input type="number" id="age" name="age">	
+			</td>
+		</tr>
+		<tr>
+			<td><label for "membership">Membership: </label>
+			<select name="membership">
+				<option value="">Blank</option>
+				{{#each orgs}}
+			       <option value="{{org_id}}">{{title}}</option>
+			    {{/each}}
+			</select>
+			</td>
+		</tr>
+		<tr>
+		<td><br><input type="submit" value="Submit" style="margin-left:75px;"></td>
+		</tr>
+	</table>
+</form>
+<br>
+<h3>List of Characters</h3>
+{{#if characters}}
+<table class="dbResults">
+	<thead>
+		<th>Name</th>
+		<th>Gender</th>
+		<th>Nationality</th>
+		<th>Age</th>
+		<th>Membership</th>
+		<th></th>
+		<th></th>
+	</thead>
+	{{#each characters}}
+	<tr>
+		<td>{{name}}</td>
+		<td>{{gender}}</td>
+		<td>{{nationality}}</td>
+		<td>{{age}}</td>
+		<td>{{membership}}</td>
+		<td><button onclick="deleteCharacter({{char_id}})">Delete</button></td>
+		<td><a href="/characters/{{char_id}}">Update</a></td>
+	</tr>
+	{{/each}}
+</table>
+{{else}}
+	<p>Empty table</p>
+{{/if}}
+

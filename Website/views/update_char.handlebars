@@ -1,0 +1,49 @@
+<link rel="stylesheet" type="text/css" href="/css/default.css">
+<h2> Update Character </h2>
+<form id="updateCharacter">
+	<table>
+		<tr>
+			<td><label for "name" >Name: </label>
+				<input type="text" id="name" name="name" value="{{character.name}}">
+			</td>
+			<td><a href="/characters" style="margin-left:75px;">Go Back</a></td>
+		</tr>
+		<tr>
+			<td><label for "genderM" >Male: </label>
+				<input type="hidden" id="curGender" value="{{character.gender}}">
+				<input type="radio" id="genderM" name="gender" value="male">
+				<label for "genderF" >Female: </label>
+				<input type="radio" id="genderF" name="gender" value="female">
+			</td>
+		</tr>
+		<tr>
+			<td><label for "nationality" >Nationality: </label>
+			<select name="nationality" id="nation-menu">
+				<option value="NULL">Blank</option>
+				{{#each nations}}
+			    <option value="{{nation_id}}">{{name}}</option>
+			    {{/each}}
+			</select>
+			</td>
+		</tr>
+		<tr>
+			<td><label for "age" >Age: </label>
+				<input type="number" id="age" name="age" value="{{character.age}}">
+			</td>
+		</tr>
+		<tr>
+			<td><label for "membership">Membership: </label>
+			<select name="membership" id="org-menu">
+				<option value="NULL">Blank</option>
+				{{#each orgs}}
+			       <option value="{{org_id}}">{{title}}</option>
+			    {{/each}}
+			</select>
+			<br>
+			</td>
+		</tr>
+	</table>
+</form>
+<button onclick="updateCharacter({{character.char_id}})">Update</button>
+<script defer>selectNation({{character.nationality}});</script>
+<script defer>selectOrg({{character.membership}});</script>
